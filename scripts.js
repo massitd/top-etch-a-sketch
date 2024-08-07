@@ -3,11 +3,10 @@ body.style.display = "flex";
 body.style.flexDirection = "column"
 body.style.alignItems = "center";
 
-
 let gridSize = 16;
 let cubeSize = "50px";
 
-const gridContainer = document.querySelector(".container");
+let gridContainer = document.querySelector(".container");
 gridContainer.style.display = "flex";
 gridContainer.style.justifyContent = "flex-start";
 
@@ -46,15 +45,16 @@ resetButton.style.margin = "5px";
 
 resetButton.addEventListener("click", () => {
     let gridInput = prompt("How many squares wide and tall should the grid be?", gridSize);
-    
     body.removeChild(gridContainer);
-    
+    gridInput = parseInt(gridInput);
+
     if (typeof(gridInput) === "number" && gridInput < 100) {
         gridSize = parseInt(gridInput);
         console.log(gridInput);
     } else {
         gridSize = 16;
     };
+    body.appendChild(gridContainer);
     gridRow();
 });
 
