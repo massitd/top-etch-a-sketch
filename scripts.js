@@ -10,6 +10,9 @@ let gridContainer = document.querySelector(".container");
 gridContainer.style.display = "flex";
 gridContainer.style.justifyContent = "flex-start";
 
+let parent = document.getElementById("parent");
+parent.appendChild(gridContainer);
+
 function gridRow() {
     // create 16 containers, 1 for each row
     for (let index = 0; index < gridSize; index ++) {
@@ -45,9 +48,14 @@ resetButton.style.margin = "5px";
 
 resetButton.addEventListener("click", () => {
     let gridInput = prompt("How many squares wide and tall should the grid be?", gridSize);
-    body.removeChild(gridContainer);
     gridInput = parseInt(gridInput);
 
+    // delete gridContainer
+    const parent = document.getElementById("parent");
+    while (parent.firstChild){
+    parent.removeChild(parent.firstChild);
+    };
+    
     if (typeof(gridInput) === "number" && gridInput < 100) {
         gridSize = parseInt(gridInput);
         console.log(gridInput);
