@@ -11,13 +11,9 @@ body {
 }
 
 .rowContainer{
-    display: flex;
-    flex-direction: column;
 }
 
 .square {
-    width: 110px;
-    height: 110px;
     background-color: black;
     margin: 0px;
 }

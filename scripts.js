@@ -42,7 +42,7 @@ resetButton.textContent = "Reset";
 resetButton.style.margin = "5px";
 
 resetButton.addEventListener("click", () => {
-    let gridInput = prompt("How many squares wide and tall should the grid be?", gridSize);
+    let gridInput = prompt("How many squares wide and tall should the grid be? (Below 100)", gridSize);
     gridInput = parseInt(gridInput);
 
     // delete gridContainer
