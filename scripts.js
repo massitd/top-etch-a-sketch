@@ -1,10 +1,10 @@
 let gridSize = 16;
+let squareWidth = 750 / gridSize;
 
 function gridRow() {
     // define grid container
     let gridContainer = document.createElement("div");
-    gridContainer.style.display = "flex";
-    gridContainer.style.justifyContent = "flex-start";
+    gridContainer.className = "gridContainer";
 
     // define a container for the grid container
     let parent = document.getElementById("parent");
@@ -13,15 +13,16 @@ function gridRow() {
     // create 16 containers, 1 for each row
     for (let index = 0; index < gridSize; index ++) {
         let rowContainer = document.createElement("div");
-        rowContainer.style.flexGrow = "0";
-        rowContainer.style.flexShrink = "1";
+        rowContainer.className = "rowContainer";
+
         gridContainer.appendChild(rowContainer);   
 
         // add squares to each rowContainer
         for (let indexA = 0; indexA < gridSize; indexA++) {
             let square = document.createElement("div");
             square.className = "square";
-
+            square.style.width = squareWidth + "px";
+            square.style.height = squareWidth + "px";
             // squares turn white on mouseover
             square.addEventListener("mouseover", () => {
                 square.style.backgroundColor = "white";
@@ -33,6 +34,7 @@ function gridRow() {
 };
 
 gridRow();
+
 
 // create reset button
 const resetButton = document.querySelector(".reset");
@@ -52,6 +54,7 @@ resetButton.addEventListener("click", () => {
     // set grid size
     if (typeof(gridInput) === "number" && gridInput < 100) {
         gridSize = parseInt(gridInput);
+        squareWidth = 750 / gridSize;
         console.log(gridInput);
     } else {
         gridSize = 16;
